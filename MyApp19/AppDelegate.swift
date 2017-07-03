@@ -10,12 +10,43 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    var db:OpaquePointer?
     var window: UIWindow?
+    let fmgr = FileManager.default
+    let gamedata = Bundle.main.path(forResource: "gamedata", ofType: "plist")
+    let docDir = NSHomeDirectory() + "/Documents"
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        print(docDir)
+        if !fmgr.fileExists(atPath: docDir + "/gamedata.plist"){
+            do{
+                try fmgr.copyItem(atPath: gamedata!, toPath: docDir + "/gamedata.plist")
+            }catch{
+                print(error)
+            }
+        }
+        
+        //以下處理資料庫檔案
+        let mydb = Bundle.main.path(forResource: "mydb", ofType: "sqlite")
+        let newdb = docDir + "/mydb.sqlite"
+        if !fmgr.fileExists(atPath: docDir + "mydb.sqlite"){
+            do {
+                try fmgr.copyItem(atPath: mydb!, toPath: newdb)
+            }catch{
+                print(error)
+            }
+        }
+        
+        if sqlite3_open(mydb, &db) == SQLITE_OK{
+            print("ok")
+        }else{
+            print("db error")
+        }
+        
+        
         return true
     }
 
@@ -39,6 +70,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
+        sqlite3_close(db)
+        
+        
+        
+        
+        
     }
 
 

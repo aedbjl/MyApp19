@@ -12,6 +12,9 @@
 		4AE88BA41F0A1B4B00025EBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AE88BA21F0A1B4B00025EBF /* Main.storyboard */; };
 		4AE88BA61F0A1B4B00025EBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AE88BA51F0A1B4B00025EBF /* Assets.xcassets */; };
 		4AE88BA91F0A1B4B00025EBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AE88BA71F0A1B4B00025EBF /* LaunchScreen.storyboard */; };
+		4AE88BB11F0A1B7C00025EBF /* gamedata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AE88BB01F0A1B7C00025EBF /* gamedata.plist */; };
+		4AE88BB41F0A2B4D00025EBF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE88BB31F0A2B4D00025EBF /* libsqlite3.tbd */; };
+		4AE88BB71F0A2E1F00025EBF /* mydb.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4AE88BB61F0A2E1600025EBF /* mydb.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,10 @@
 		4AE88BA51F0A1B4B00025EBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AE88BA81F0A1B4B00025EBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4AE88BAA1F0A1B4B00025EBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4AE88BB01F0A1B7C00025EBF /* gamedata.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = gamedata.plist; sourceTree = "<group>"; };
+		4AE88BB31F0A2B4D00025EBF /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		4AE88BB51F0A2BB800025EBF /* bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
+		4AE88BB61F0A2E1600025EBF /* mydb.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = mydb.sqlite; path = ../../../mydb.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AE88BB41F0A2B4D00025EBF /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +48,7 @@
 			children = (
 				4AE88B9D1F0A1B4B00025EBF /* MyApp19 */,
 				4AE88B9C1F0A1B4B00025EBF /* Products */,
+				4AE88BB21F0A2B4D00025EBF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +64,24 @@
 			isa = PBXGroup;
 			children = (
 				4AE88B9E1F0A1B4B00025EBF /* AppDelegate.swift */,
+				4AE88BB61F0A2E1600025EBF /* mydb.sqlite */,
 				4AE88BA01F0A1B4B00025EBF /* ViewController.swift */,
 				4AE88BA21F0A1B4B00025EBF /* Main.storyboard */,
 				4AE88BA51F0A1B4B00025EBF /* Assets.xcassets */,
 				4AE88BA71F0A1B4B00025EBF /* LaunchScreen.storyboard */,
 				4AE88BAA1F0A1B4B00025EBF /* Info.plist */,
+				4AE88BB01F0A1B7C00025EBF /* gamedata.plist */,
+				4AE88BB51F0A2BB800025EBF /* bridge.h */,
 			);
 			path = MyApp19;
+			sourceTree = "<group>";
+		};
+		4AE88BB21F0A2B4D00025EBF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4AE88BB31F0A2B4D00025EBF /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +144,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AE88BB71F0A2E1F00025EBF /* mydb.sqlite in Resources */,
+				4AE88BB11F0A1B7C00025EBF /* gamedata.plist in Resources */,
 				4AE88BA91F0A1B4B00025EBF /* LaunchScreen.storyboard in Resources */,
 				4AE88BA61F0A1B4B00025EBF /* Assets.xcassets in Resources */,
 				4AE88BA41F0A1B4B00025EBF /* Main.storyboard in Resources */,
@@ -268,6 +290,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tw.org.iii.MyApp19;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = MyApp19/bridge.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -281,6 +304,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tw.org.iii.MyApp19;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = MyApp19/bridge.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
